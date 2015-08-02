@@ -1,39 +1,51 @@
 package pt.orgmir.budgetandroid.localstorage.wrapers
 
+import io.realm.Realm
+import pt.orgmir.budgetandroid.BAApplication
 import pt.orgmir.budgetandroid.localstorage.model.BAExpenseModel
 
 /**
  * Created by Luis Ramos on 7/26/2015.
  */
-public class BAExpense(public val model: BAExpenseModel) {
+public class BAExpense(public var model: BAExpenseModel) {
+
+  public constructor() : this(BAExpenseModel())
 
   companion object{
 
+    public fun findAll() : List<BAExpense> {
+      val findAll = BAApplication.realm.where(javaClass<BAExpenseModel>()).findAll()
+      return findAll.map { BAExpense(it) }
+    }
   }
 
   public var id : String
-    get() = model.id
-    set(value) { model.id = value}
+    get() = model.getId()
+    set(value) { model.setId(value) }
 
   public var value : Double
-    get() = model.value
-    set(value) { model.value = value }
+    get() = model.getValue()
+    set(value) { model.setValue(value) }
 
   public var category: String
-    get() = model.category
-    set(value) { model.category = value }
+    get() = model.getCategory()
+    set(value) { model.setCategory(value) }
 
   public var title : String
-    get() = model.title
-    set(value) { model.title = value}
+    get() = model.getTitle()
+    set(value) { model.setTitle(value)}
 
   public var description : String?
-    get() = model.description
-    set(value) { model.description = description }
+    get() = model.getDescription()
+    set(value) { model.setDescription(description) }
 
   /**
    * QUERIES
    */
 
-  
+  public fun create() {
+    saveData {
+      model = it.copyToRealm(model)
+    }
+  }
 }

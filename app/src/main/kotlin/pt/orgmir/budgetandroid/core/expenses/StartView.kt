@@ -51,7 +51,7 @@ public class StartView(c: Context) : RenderableView(c) {
   }
 
   init {
-    mBackstack = (c as BAExpensesListActivity).backstack
+    mBackstack = (c as pt.orgmir.budgetandroid.core.expenses.list.BAExpensesListActivity).backstack
   }
 
   override fun view(): Nodes.ViewNode {

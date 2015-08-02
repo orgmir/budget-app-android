@@ -72,7 +72,7 @@ public class CountDownView(c: Context) : RenderableView(c) {
 
 
   init {
-    mBackstack = (c as BAExpensesListActivity).backstack
+    mBackstack = (c as pt.orgmir.budgetandroid.core.expenses.list.BAExpensesListActivity).backstack
     mCurrentTask = mTasks.getCurrent()
     if (mCurrentTask == null) {
       mCurrentTask = mTasks.create("New task", 25 * 60 * 1000)
