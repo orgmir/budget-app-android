@@ -3,6 +3,7 @@ package pt.orgmir.budgetandroid.core.expenses.create
 import android.content.Context
 import android.graphics.Color
 import android.text.InputType
+import android.view.Gravity
 import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
@@ -52,11 +53,15 @@ public class BAExpenseCreateView(context: Context) : RenderableView(context), Te
   override fun view(): Nodes.ViewNode? {
     return v<LinearLayout>{
       -size(MATCH, WRAP)
+      -padding(dip(16), dip(5))
       -orientation(LinearLayout.HORIZONTAL)
-      -backgroundResource(R.color.ba_dark_white)
+      -backgroundResource(R.drawable.background_top_shadow)
 
       v<EditText>{
-        -size(MATCH, dip(44)).weight(1f)
+        -size(MATCH, dip(44))
+                .weight(1f)
+                .margin(0, 0, dip(8), 0)
+        -gravity(Gravity.RIGHT or Gravity.CENTER_VERTICAL)
         -id(VALUE_EDITTEXT_ID)
         -hint(R.string.value_input_hint)
         -inputType(InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL)

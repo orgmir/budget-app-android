@@ -1,5 +1,6 @@
 package pt.orgmir.budgetandroid.core.expenses
 
+import android.animation.LayoutTransition
 import android.content.Context
 import android.text.InputType
 import android.view.inputmethod.EditorInfo
@@ -21,25 +22,31 @@ import trikita.anvil.v10.Attrs.*
  */
 public class BAMainView(context: Context) : RenderableView(context) {
 
+  val CONTENT_ID = 100
+
+  override fun onAttachedToWindow() {
+    post {
+      val content = findViewById(CONTENT_ID) as LinearLayout
+      content.setLayoutTransition(LayoutTransition())
+    }
+  }
+
   override fun view(): Nodes.ViewNode? {
     return v<LinearLayout>{
-      -size(FILL, FILL)
+      -id(CONTENT_ID)
+      -size(MATCH, MATCH)
       -orientation(LinearLayout.VERTICAL)
-//      -backgroundResource(R.color.ba_dark_white)
+      -backgroundResource(R.color.ba_white)
 
-
+      v<LinearLayout>{
+        -size(MATCH, 0).weight(1f)
+        v<BAExpenseListView>{
+          -size(MATCH, MATCH)
+        }
+      }
       v<BAExpenseCreateView>{
         -size(MATCH, WRAP)
       }
-      v<LinearLayout>{
-        -size(FILL, FILL)
-
-        v<BAExpenseListView>{
-
-        }
-      }
-
-
     }
   }
 }

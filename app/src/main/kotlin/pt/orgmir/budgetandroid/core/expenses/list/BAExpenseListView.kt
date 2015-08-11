@@ -13,6 +13,9 @@ import trikita.anvil.v10.Attrs.*
 import pt.orgmir.budgetandroid.R
 import pt.orgmir.budgetandroid.core.expenses.list.BAExpensesListPresenter
 import pt.orgmir.budgetandroid.localstorage.wrapers.BAExpense
+import pt.orgmir.budgetandroid.utils.BAFonts
+import pt.orgmir.budgetandroid.utils.getColor
+import trikita.anvil.BaseAttrs
 import trikita.anvil.RenderableArrayAdapter
 
 /**
@@ -25,8 +28,8 @@ public class BAExpenseListView(context: Context) : RenderableView(context) {
   public override fun view() =
       v<ListView>{
         -id(11)
-        -size(FILL, FILL)
-        -backgroundColor(0xff3f51b5.toInt())
+        -size(MATCH, MATCH)
+//        -backgroundColor(0xff3f51b5.toInt())
         -adapter(BAExpensesAdapter(presenter.getData()))
       }
 
@@ -37,11 +40,16 @@ public class BAExpenseListView(context: Context) : RenderableView(context) {
 
     override fun itemView(pos: Int, expense: BAExpense): Nodes.ViewNode? {
       return v<LinearLayout> {
-        -size(MATCH, dip(50))
+        -size(MATCH, WRAP)
+        -padding(dip(16), dip(10))
         -orientation(LinearLayout.HORIZONTAL)
 
         v<TextView> {
-          -size(MATCH, MATCH)
+          -size(MATCH, WRAP).gravity(Gravity.RIGHT)
+          -gravity(Gravity.RIGHT)
+          -textColor(getColor(R.color.ba_black))
+//          -typeface(BAFonts.LIGHT)
+          -textSize(24f)
           -text(expense.value.toString())
         }
       }

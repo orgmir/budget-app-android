@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <color name="ba_white">#fff</color>
+  <color name="ba_black">#000</color>
+  <color name="ba_40_transparent_black">#4D000000</color>
   <color name="ba_dark_white">#ffd8d8d8</color>
 </resources>

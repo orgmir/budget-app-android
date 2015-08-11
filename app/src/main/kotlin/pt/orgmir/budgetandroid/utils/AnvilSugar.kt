@@ -1,6 +1,7 @@
 package pt.orgmir.budgetandroid.utils
 
 import android.view.View
+import trikita.anvil.BaseAttrs
 import trikita.anvil.Nodes
 import java.util.*
 
@@ -20,4 +21,8 @@ inline fun v<reified T: View>(f: () -> Unit): Nodes.ViewNode {
   stack.push(node)
   f()
   return stack.pop()
+}
+
+fun getColor(id : Int) : Int {
+  return BaseAttrs.R().getColor(id)
 }
