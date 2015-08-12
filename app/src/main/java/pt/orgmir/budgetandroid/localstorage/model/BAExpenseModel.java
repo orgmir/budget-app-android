@@ -1,5 +1,6 @@
 package pt.orgmir.budgetandroid.localstorage.model;
 
+import java.util.Date;
 import java.util.UUID;
 
 import io.realm.RealmObject;
@@ -20,6 +21,8 @@ public class BAExpenseModel extends RealmObject {
   private String title = "";
 
   private String description = "";
+
+  private Date createdAt = new Date();
 
   public BAExpenseModel() { super(); }
 
@@ -61,5 +64,13 @@ public class BAExpenseModel extends RealmObject {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  public Date getCreatedAt() {
+    return createdAt;
+  }
+
+  public void setCreatedAt(Date createdAt) {
+    this.createdAt = createdAt;
   }
 }

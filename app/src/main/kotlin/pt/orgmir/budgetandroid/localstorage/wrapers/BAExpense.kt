@@ -17,6 +17,11 @@ public class BAExpense(public var model: BAExpenseModel) {
       val findAll = BAApplication.realm.where(javaClass<BAExpenseModel>()).findAll()
       return findAll.map { BAExpense(it) }
     }
+
+    public fun findAllOrderedByDate() : List<BAExpense> {
+      val findAll = BAApplication.realm.where(javaClass<BAExpenseModel>()).findAllSorted("createdAt", false)
+      return findAll.map { BAExpense(it) }
+    }
   }
 
   public var id : String

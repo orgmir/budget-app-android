@@ -7,7 +7,6 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import pt.orgmir.budgetandroid.R
-import pt.orgmir.budgetandroid.Tasks
 import pt.orgmir.budgetandroid.base.BABaseActivity
 import pt.orgmir.budgetandroid.utils.minus
 import pt.orgmir.budgetandroid.utils.v

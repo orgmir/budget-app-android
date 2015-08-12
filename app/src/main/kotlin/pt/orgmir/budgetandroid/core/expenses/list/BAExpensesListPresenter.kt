@@ -13,13 +13,5 @@ public class BAExpensesListPresenter(val view: BAExpenseListView) {
 
   val backstack : trikita.anvil.Backstack = (view.getContext() as BABaseActivity).backstack
 
-  public fun getData() : List<BAExpense> = BAExpense.findAll()
-
-  public fun showCreateExpenseView() {
-    backstack.navigate(BAExpenseCreateView(view.getContext()))
-  }
-
-  public fun buttonClicked() {
-    showCreateExpenseView()
-  }
+  public fun getData() : List<BAExpense> = BAExpense.findAllOrderedByDate()
 }
