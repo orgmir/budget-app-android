@@ -3,6 +3,7 @@ package pt.orgmir.budgetandroid.localstorage.wrapers
 import io.realm.Realm
 import pt.orgmir.budgetandroid.BAApplication
 import pt.orgmir.budgetandroid.localstorage.model.BAExpenseModel
+import pt.orgmir.budgetandroid.localstorage.wrapers.BACategory
 
 /**
  * Created by Luis Ramos on 7/26/2015.
@@ -32,9 +33,9 @@ public class BAExpense(public var model: BAExpenseModel) {
     get() = model.getValue()
     set(value) { model.setValue(value) }
 
-  public var category: String
-    get() = model.getCategory()
-    set(value) { model.setCategory(value) }
+  public var category: BACategory
+    get() = BACategory(model.getCategory())
+    set(value) { model.setCategory(value.model) }
 
   public var title : String
     get() = model.getTitle()

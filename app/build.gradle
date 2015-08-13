@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'announce'
+apply plugin: 'build-announcements'
 
 android {
   compileSdkVersion 22
@@ -26,6 +28,7 @@ android {
   lintOptions {
     abortOnError false
   }
+  
 }
 
 dependencies {

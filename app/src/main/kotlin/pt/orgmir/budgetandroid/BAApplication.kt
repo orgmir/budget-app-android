@@ -5,6 +5,7 @@ import android.content.Context
 import io.realm.Realm
 import io.realm.RealmConfiguration
 import kotlin.properties.Delegates
+import pt.orgmir.budgetandroid.localstorage.wrapers.BACategory
 
 /**
  * Created by Luis Ramos on 8/1/2015.
@@ -27,5 +28,13 @@ public class BAApplication : Application() {
     Realm.setDefaultConfiguration(realmConfig)
 
     realm = Realm.getDefaultInstance()
+
+    setupDB()
+  }
+
+  private fun setupDB() {
+    if(!BACategory.hasCategories()){
+      BACategory.createCategories()
+    }
   }
 }

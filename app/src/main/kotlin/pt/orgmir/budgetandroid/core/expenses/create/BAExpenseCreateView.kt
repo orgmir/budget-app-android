@@ -9,6 +9,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import android.widget.TextView
 import pt.orgmir.budgetandroid
 import pt.orgmir.budgetandroid.base.BABaseActivity
@@ -51,10 +52,10 @@ public class BAExpenseCreateView(context: Context) : RenderableView(context), Te
   }
 
   override fun view(): Nodes.ViewNode? {
-    return v<LinearLayout>{
+    return v<RelativeLayout>{
       -size(MATCH, WRAP)
       -padding(dip(16), dip(5))
-      -orientation(LinearLayout.HORIZONTAL)
+      //-orientation(LinearLayout.VERTICAL)
       -backgroundResource(R.drawable.background_top_shadow)
 
       v<EditText>{
@@ -69,12 +70,21 @@ public class BAExpenseCreateView(context: Context) : RenderableView(context), Te
         -onEditorAction(this)
       }
 
-      v<Button>{
-        -size(WRAP, MATCH)
-        -text(R.string.add_expense)
-        -onClick { presenter.doneButtonClicked() }
+//     v<Button>{
+//       -size(WRAP, MATCH)
+//       -text(R.string.add_expense)
+//        -onClick { presenter.doneButtonClicked() }
+//      }
+
+      for(category in presenter.getCategories()){
+        v<Button>{
+          -size(WRAP, WRAP)
+          -text(category.name)
+          -onClick { presenter.doneButtonClicked(category) }
+        }
       }
 
     }
   }
+
 }

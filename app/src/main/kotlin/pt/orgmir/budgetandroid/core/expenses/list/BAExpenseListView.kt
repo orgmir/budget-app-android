@@ -45,7 +45,15 @@ public class BAExpenseListView(context: Context) : RenderableView(context) {
         -orientation(LinearLayout.HORIZONTAL)
 
         v<TextView> {
-          -size(MATCH, WRAP).gravity(Gravity.RIGHT)
+          -size(0, MATCH).weight(1f)
+          -gravity(Gravity.CENTER_VERTICAL)
+          -textColor(getColor(R.color.ba_black))
+          -textSize(18f)
+          -text(expense.category.name)
+        }        
+
+        v<TextView> {
+          -size(WRAP, WRAP)
           -gravity(Gravity.RIGHT)
           -textColor(getColor(R.color.ba_black))
 //          -typeface(BAFonts.LIGHT)

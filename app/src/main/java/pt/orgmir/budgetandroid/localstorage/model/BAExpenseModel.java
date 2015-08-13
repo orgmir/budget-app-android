@@ -16,7 +16,7 @@ public class BAExpenseModel extends RealmObject {
 
   private double value = 0.0;
 
-  private String category = "";
+  private BACategoryModel category = new BACategoryModel();
 
   private String title = "";
 
@@ -42,11 +42,11 @@ public class BAExpenseModel extends RealmObject {
     this.value = value;
   }
 
-  public String getCategory() {
+  public BACategoryModel getCategory() {
     return category;
   }
 
-  public void setCategory(String category) {
+  public void setCategory(BACategoryModel category) {
     this.category = category;
   }
 
